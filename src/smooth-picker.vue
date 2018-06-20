@@ -1,5 +1,5 @@
 <template>
-  <div class="smooth-picker flex-box" v-if="isOpened > 0">
+  <div class="smooth-picker flex-box">
     <div class="header">
       <div class="left" v-on:click="close">取消</div>
       <div class="right" v-on:click="finish">确定</div>

@@ -372,6 +372,7 @@
     background-color: white
     font-size 1rem
     .header
+      position: absolute
       height: 32
       display: flex
       flex-direction: row
@@ -379,6 +380,7 @@
       align-content: center
       background-color: #f1f2f4
       color: #000
+      font-size: 20
     .smooth-picker
       height: r($smoothPickerHeight)
       overflow: hidden

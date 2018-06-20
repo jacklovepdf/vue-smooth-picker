@@ -1,28 +1,30 @@
-<template>
-  <div class="smooth-picker flex-box">
+<template v-if="isOpened > 0">
+  <div class="smooth-picker" v-show="show">
     <div class="header">
       <div class="left" v-on:click="close">取消</div>
       <div class="right" v-on:click="finish">确定</div>
     </div>
     <!-- smooth-group-layer -->
-    <div ref="smoothGroup" v-for="(group, gIndex) in data" :key="gIndex"
-      class="smooth-group" :class="getGroupClass(gIndex)">
+    <div class="flex-box">
+      <div ref="smoothGroup" v-for="(group, gIndex) in data" :key="gIndex"
+           class="smooth-group" :class="getGroupClass(gIndex)">
 
-      <div class="smooth-list">
-        <div v-if="group.divider" class="smooth-item divider" :class="getItemClass(gIndex, iIndex, true)">{{ group.text }}</div>
+        <div class="smooth-list">
+          <div v-if="group.divider" class="smooth-item divider" :class="getItemClass(gIndex, iIndex, true)">{{ group.text }}</div>
 
-        <div v-else v-for="(item, iIndex) in group.list" :key="iIndex"
-          class="smooth-item" :class="getItemClass(gIndex, iIndex)" :style="getItemStyle(gIndex, iIndex)">
-          {{ item.value || item }}
+          <div v-else v-for="(item, iIndex) in group.list" :key="iIndex"
+               class="smooth-item" :class="getItemClass(gIndex, iIndex)" :style="getItemStyle(gIndex, iIndex)">
+            {{ item.value || item }}
+          </div>
         </div>
+
       </div>
 
-    </div>
-
-    <div ref="smoothHandleLayer" class="smooth-handle-layer flex-box direction-column">
-      <div data-type="top" class="smooth-top flex-1"></div>
-      <div data-type="middle" class="smooth-middle"></div>
-      <div data-type="bottom" class="smooth-bottom flex-1"></div>
+      <div ref="smoothHandleLayer" class="smooth-handle-layer flex-box direction-column">
+        <div data-type="top" class="smooth-top flex-1"></div>
+        <div data-type="middle" class="smooth-middle"></div>
+        <div data-type="bottom" class="smooth-bottom flex-1"></div>
+      </div>
     </div>
 
   </div>
@@ -86,7 +88,6 @@
     },
     watch: {
       show (val) {
-        console.log('val====>', val)
         if (val) {
           this.isOpened += 1
         }

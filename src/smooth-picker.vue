@@ -1,8 +1,8 @@
 <template v-if="isOpened > 0">
   <div class="wrapper" v-show="show">
     <div class="header">
-      <div class="left" v-on:click="close">取消</div>
-      <div class="right" v-on:click="finish">确定</div>
+      <div class="left" @click="close">取消</div>
+      <div class="right" @click="finish">确定</div>
     </div>
     <!-- smooth-group-layer -->
     <div class="smooth-picker flex-box">

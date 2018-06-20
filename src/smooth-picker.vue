@@ -388,7 +388,7 @@
         height: r(100)
         position: relative
 
-        top: r(160 / 2 - $smoothMiddleLayerHeight / 2 + 32) // half of picker height - half of item height
+        top: r($smoothPickerHeight / 2 - $smoothMiddleLayerHeight / 2) // half of picker height - half of item height
       .smooth-item
         position: absolute
         top: 0

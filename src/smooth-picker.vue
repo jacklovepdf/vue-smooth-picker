@@ -86,6 +86,7 @@
     },
     watch: {
       show (val) {
+        console.log('val====>', val)
         if (val) {
           this.isOpened += 1
         }

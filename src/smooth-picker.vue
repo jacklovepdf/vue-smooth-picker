@@ -89,13 +89,15 @@
     watch: {
       show (val) {
         if (val) {
-          this.isOpened += 1
+          this.isOpened = 1
+        } else {
+          this.isOpened = 0
         }
       }
     },
     methods: {
       close: function (e) {
-        this.$emit('close')
+        this.$emit('cancel')
         e.preventDefault()
       },
       finish: function (e) {

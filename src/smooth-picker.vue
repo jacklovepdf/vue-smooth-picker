@@ -377,8 +377,8 @@
       flex-direction: row
       justify-content: space-around
       align-content: center
-      background-color: '#f1f2f4'
-      color: '#000'
+      background-color: #f1f2f4
+      color: #000
     .smooth-picker
       height: r($smoothPickerHeight)
       overflow: hidden

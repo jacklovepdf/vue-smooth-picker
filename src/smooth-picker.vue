@@ -104,7 +104,7 @@
       },
       setGroupData (gIndex, groupData) {
         // for current index list
-        const iCI = groupData.currentIndex;
+        const iCI = groupData.currentIndex
         let movedIndex = 0
         if (typeof iCI === 'number' && iCI >= 0 && groupData.list && groupData.list.length && iCI <= groupData.list.length - 1) {
           movedIndex = Math.round(iCI)
@@ -382,6 +382,8 @@
     .smooth-picker
       height: r($smoothPickerHeight)
       overflow: hidden
+      position: absolute
+      top: 32
       .smooth-group
         //
       .smooth-list

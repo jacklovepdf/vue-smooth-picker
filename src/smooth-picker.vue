@@ -372,7 +372,6 @@
     background-color: white
     font-size 1rem
     .header
-      position: absolute
       height: 32
       display: flex
       flex-direction: row
@@ -384,8 +383,6 @@
     .smooth-picker
       height: r($smoothPickerHeight)
       overflow: hidden
-      position: absolute
-      top: 32
       .smooth-group
         //
       .smooth-list
@@ -419,7 +416,7 @@
         height: calc(100% + 2px)
         left: 0
         right: 0
-        top: -1px
+        top: 31px
         bottom: -1px
         .smooth-top
           border-bottom: 1px solid #c8c7cc

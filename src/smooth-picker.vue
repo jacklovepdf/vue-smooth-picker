@@ -97,7 +97,7 @@
         e.preventDefault()
       },
       finish: function (e) {
-        this.$emit('confirm', JSON.parse(JSON.stringify(this.selects)))
+        this.$emit('confirm', JSON.parse(JSON.stringify(this.currentIndexList)))
         e.preventDefault()
       },
       setGroupData (gIndex, groupData) {

@@ -1,6 +1,9 @@
 <template>
-  <div class="smooth-picker flex-box">
-
+  <div class="smooth-picker flex-box" v-if="isOpened > 0">
+    <div class="header">
+      <div class="left" v-on:click="close">取消</div>
+      <div class="right" v-on:click="finish">确定</div>
+    </div>
     <!-- smooth-group-layer -->
     <div ref="smoothGroup" v-for="(group, gIndex) in data" :key="gIndex"
       class="smooth-group" :class="getGroupClass(gIndex)">
@@ -36,7 +39,12 @@
       change: {
         type: Function,
         default: () => {}
+      },
+      show: {
+        type: Boolean,
+        default: false
       }
+
     },
     data () {
       return {
@@ -58,7 +66,8 @@
           getRectTimeoutId: null, // save timeout id
           lastStyleDisplay: null, // for detect picker style display if it is changed
           watchDomObserver: null // for watching this picker dom
-        }
+        },
+        isOpened: 0
       }
     },
     mounted () {
@@ -75,7 +84,22 @@
 
       window.removeEventListener('resize', this.safeGetGroupRectList)
     },
+    watch: {
+      show (val) {
+        if (val) {
+          this.isOpened += 1
+        }
+      }
+    },
     methods: {
+      close: function (e) {
+        this.$emit('close')
+        e.preventDefault()
+      },
+      finish: function (e) {
+        this.$emit('confirm', JSON.parse(JSON.stringify(this.selects)))
+        e.preventDefault()
+      },
       setGroupData (gIndex, groupData) {
         // for current index list
         const iCI = groupData.currentIndex
@@ -348,6 +372,12 @@
     position: relative
     background-color: white
     overflow: hidden
+    .header
+      height: 32
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      align-content: center
     .smooth-group
       //
     .smooth-list

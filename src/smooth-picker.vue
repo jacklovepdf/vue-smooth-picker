@@ -1,11 +1,11 @@
 <template v-if="isOpened > 0">
-  <div class="smooth-picker" v-show="show">
+  <div class="wrapper" v-show="show">
     <div class="header">
       <div class="left" v-on:click="close">取消</div>
       <div class="right" v-on:click="finish">确定</div>
     </div>
     <!-- smooth-group-layer -->
-    <div class="flex-box">
+    <div class="smooth-picker flex-box">
       <div ref="smoothGroup" v-for="(group, gIndex) in data" :key="gIndex"
            class="smooth-group" :class="getGroupClass(gIndex)">
 
@@ -364,16 +364,13 @@
   r(val)
     (val / 16) * 1em
 
-  $smoothPickerHeight = 192
+  $smoothPickerHeight = 160
   $smoothMiddleLayerHeight = 32
 
-  .smooth-picker
-    font-size 1rem
-    height: r($smoothPickerHeight)
-
+  .wrapper
     position: relative
     background-color: white
-    overflow: hidden
+    font-size 1rem
     .header
       height: 32
       display: flex
@@ -382,62 +379,65 @@
       align-content: center
       background-color: '#f1f2f4'
       color: '#000'
-    .smooth-group
-      //
-    .smooth-list
-      height: r(100)
-      position: relative
-
-      top: r(160 / 2 - $smoothMiddleLayerHeight / 2 + 32) // half of picker height - half of item height
-    .smooth-item
-      position: absolute
-      top: 0
-      left: 0
-
+    .smooth-picker
+      height: r($smoothPickerHeight)
       overflow: hidden
-      width: 100%
-      text-overflow: ellipsis
-      white-space: nowrap
-      display: block
-      text-align: center
+      .smooth-group
+        //
+      .smooth-list
+        height: r(100)
+        position: relative
 
-      will-change: transform
-      contain: strict
+        top: r(160 / 2 - $smoothMiddleLayerHeight / 2 + 32) // half of picker height - half of item height
+      .smooth-item
+        position: absolute
+        top: 0
+        left: 0
 
-      height: r(32)
-      line-height: 2
-      font-size: r(16)
-    .selected-item
-      //
-    .smooth-handle-layer
-      position: absolute
-      width: 100%
-      height: calc(100% + 2px)
-      left: 0
-      right: 0
-      top: -1px
-      bottom: -1px
-      .smooth-top
-        border-bottom: 1px solid #c8c7cc
-        background: linear-gradient(to bottom, white 10%, rgba(255, 255, 255, 0.7) 100%)
-        transform: translate3d(0, 0, 5.625em)
-      .smooth-middle
-        height: r($smoothMiddleLayerHeight)
-      .smooth-bottom
-        border-top: 1px solid #c8c7cc
-        background: linear-gradient(to top, white 10%, rgba(255, 255, 255, 0.7) 100%)
-        transform: translate3d(0, 0, 5.625em)
+        overflow: hidden
+        width: 100%
+        text-overflow: ellipsis
+        white-space: nowrap
+        display: block
+        text-align: center
 
-  /* flex system */
-  .flex-box
-    display: flex
-    for prop in column row
-      &.direction-{prop}
-        flex-direction: prop
+        will-change: transform
+        contain: strict
 
-    /* for items */
-    for n in 1..12
-      .flex-{n}
-        flex: n
+        height: r(32)
+        line-height: 2
+        font-size: r(16)
+      .selected-item
+        //
+      .smooth-handle-layer
+        position: absolute
+        width: 100%
+        height: calc(100% + 2px)
+        left: 0
+        right: 0
+        top: -1px
+        bottom: -1px
+        .smooth-top
+          border-bottom: 1px solid #c8c7cc
+          background: linear-gradient(to bottom, white 10%, rgba(255, 255, 255, 0.7) 100%)
+          transform: translate3d(0, 0, 5.625em)
+        .smooth-middle
+          height: r($smoothMiddleLayerHeight)
+        .smooth-bottom
+          border-top: 1px solid #c8c7cc
+          background: linear-gradient(to top, white 10%, rgba(255, 255, 255, 0.7) 100%)
+          transform: translate3d(0, 0, 5.625em)
+
+    /* flex system */
+    .flex-box
+      display: flex
+      for prop in column row
+        &.direction-{prop}
+          flex-direction: prop
+
+      /* for items */
+      for n in 1..12
+        .flex-{n}
+          flex: n
 
 </style>

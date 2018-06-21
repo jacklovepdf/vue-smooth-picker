@@ -413,11 +413,9 @@
       .smooth-handle-layer
         position: absolute
         width: 100%
-        height: calc(100% + 2px)
+        height: $smoothPickerHeight
         left: 0
         right: 0
-        top: 31px
-        bottom: -1px
         .smooth-top
           border-bottom: 1px solid #c8c7cc
           background: linear-gradient(to bottom, white 10%, rgba(255, 255, 255, 0.7) 100%)

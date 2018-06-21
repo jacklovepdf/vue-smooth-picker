@@ -413,7 +413,7 @@
       .smooth-handle-layer
         position: absolute
         width: 100%
-        height: $smoothPickerHeight
+        height: r($smoothPickerHeight)
         left: 0
         right: 0
         .smooth-top

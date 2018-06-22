@@ -1,5 +1,5 @@
 <template v-if="isOpened > 0">
-  <div class="wrapper" v-show="show">
+  <div class="wrapper" v-show="show" v-initCurrentIndexList="initCurrentIndexList">
     <div class="header">
       <div class="left" @click="close">取消</div>
       <div class="right" @click="finish">确定</div>
@@ -46,14 +46,14 @@
         type: Boolean,
         default: false
       },
-      currentIndexList: {
+      initCurrentIndexList: {
         type: Array,
         default: []
       }
     },
     data () {
       return {
-        currentIndexList: this.currentIndexList, // save groups's index
+        currentIndexList: this.getInitCurrentIndexList(), // save groups's index
         lastCurrentIndexList: [], // for detect which group's current index if it is changed
 
         groupsRectList: new Array(this.data.length), // save the dom rect list of this picker's groups
@@ -96,6 +96,11 @@
         } else {
           this.isOpened = 0
         }
+      },
+      initCurrentIndexList (val) {
+        if (Array.isArray(val)) {
+          this.currentIndexList = val
+        }
       }
     },
     methods: {
@@ -104,6 +109,13 @@
       },
       finish: function (e) {
         this.$emit('confirm', JSON.parse(JSON.stringify(this.currentIndexList)))
+      },
+      getInitCurrentIndexList: function () {
+        if (Array.isArray(this.initCurrentIndexList)) {
+          return this.initCurrentIndexList
+        } else {
+          return []
+        }
       },
       setGroupData (gIndex, groupData) {
         // for current index list
@@ -123,17 +135,6 @@
 
         // set group data
         this.$set(this.data, gIndex, groupData)
-      },
-      getInitialCurrentIndexList () {
-        let currentIndexList = []
-        currentIndexList = this.data.map((item, index) => {
-          const iCI = item.currentIndex
-          if (typeof iCI === 'number' && iCI >= 0 && item.list && item.list.length && iCI <= item.list.length - 1) {
-            return Math.round(iCI)
-          }
-          return 0
-        })
-        return currentIndexList;
       },
       createDomObserver () {
         return new window.MutationObserver((mutations) => {

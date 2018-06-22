@@ -45,12 +45,15 @@
       show: {
         type: Boolean,
         default: false
+      },
+      currentIndexList: {
+        type: Array,
+        default: []
       }
-
     },
     data () {
       return {
-        currentIndexList: this.getInitialCurrentIndexList(), // save groups's index
+        currentIndexList: this.currentIndexList, // save groups's index
         lastCurrentIndexList: [], // for detect which group's current index if it is changed
 
         groupsRectList: new Array(this.data.length), // save the dom rect list of this picker's groups
@@ -122,13 +125,15 @@
         this.$set(this.data, gIndex, groupData)
       },
       getInitialCurrentIndexList () {
-        return this.data.map((item, index) => {
+        let currentIndexList = []
+        currentIndexList = this.data.map((item, index) => {
           const iCI = item.currentIndex
           if (typeof iCI === 'number' && iCI >= 0 && item.list && item.list.length && iCI <= item.list.length - 1) {
             return Math.round(iCI)
           }
           return 0
         })
+        return currentIndexList;
       },
       createDomObserver () {
         return new window.MutationObserver((mutations) => {

@@ -1,5 +1,5 @@
 {
-  "name": "@jacklovepdf/vue-multi-picker",
+  "name": "byted-multi-picker",
   "version": "0.5.6",
   "description": "A vue2 data picker that like native datetime picker",
   "main": "dist/smooth-picker.js",

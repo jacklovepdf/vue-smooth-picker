@@ -421,13 +421,13 @@
         left: 0
         right: 0
         .smooth-top
-          border-bottom: 1px solid #c8c7cc
+          border-bottom: 1px solid #E8E8E8
           background: linear-gradient(to bottom, white 10%, rgba(255, 255, 255, 0.7) 100%)
           transform: translate3d(0, 0, 5.625em)
         .smooth-middle
           height: r($smoothMiddleLayerHeight)
         .smooth-bottom
-          border-top: 1px solid #c8c7cc
+          border-top: 1px solid #E8E8E8
           background: linear-gradient(to top, white 10%, rgba(255, 255, 255, 0.7) 100%)
           transform: translate3d(0, 0, 5.625em)
 

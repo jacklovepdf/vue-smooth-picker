@@ -1,6 +1,6 @@
 {
   "name": "byted-multi-picker",
-  "version": "0.5.9",
+  "version": "0.6.0",
   "description": "A vue2 data picker that like native datetime picker",
   "main": "dist/smooth-picker.js",
   "scripts": {

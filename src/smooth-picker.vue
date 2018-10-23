@@ -367,14 +367,14 @@
     (val / 16) * 1em
 
   $smoothPickerHeight = 160
-  $smoothMiddleLayerHeight = 32
+  $smoothMiddleLayerHeight = 48
 
   .wrapper
     position: relative
     background-color: white
     font-size 1rem
     .header
-      height: 32
+      height: 4rem
       display: flex
       flex-direction: row
       justify-content: space-around

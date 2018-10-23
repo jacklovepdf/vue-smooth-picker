@@ -1,8 +1,8 @@
 <template v-if="isOpened > 0">
   <div class="wrapper" v-show="show">
     <div class="header">
-      <div class="left" @click="close">取消</div>
-      <div class="right" @click="finish">确定</div>
+      <div class="header-btn" @click="close">取消</div>
+      <div class="header-btn" @click="finish">确定</div>
     </div>
     <!-- smooth-group-layer -->
     <div class="smooth-picker flex-box">
@@ -377,11 +377,14 @@
       height: r(44);
       display: flex
       flex-direction: row
-      justify-content: space-around
-      align-content: center
-      background-color: #f1f2f4
-      color: #000
-      font-size: 20
+      justify-content: space-between
+      align-items: center
+      font-size: 17
+      border-bottom 1px solid #E8E8E8
+      padding: 0 r(15)
+      .header-btn
+        color: #2A90D7
+        display inline-block
     .smooth-picker
       height: r($smoothPickerHeight)
       overflow: hidden

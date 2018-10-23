@@ -367,14 +367,14 @@
     (val / 16) * 1em
 
   $smoothPickerHeight = 160
-  $smoothMiddleLayerHeight = 48
+  $smoothMiddleLayerHeight = 32
 
   .wrapper
     position: relative
     background-color: white
     font-size 1rem
     .header
-      height: 4rem
+      height: r(44);
       display: flex
       flex-direction: row
       justify-content: space-around
@@ -390,7 +390,6 @@
       .smooth-list
         height: r(100)
         position: relative
-
         top: r($smoothPickerHeight / 2 - $smoothMiddleLayerHeight / 2) // half of picker height - half of item height
       .smooth-item
         position: absolute
